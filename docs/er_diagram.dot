@@ -1,0 +1,38 @@
+digraph ER {
+  rankdir=LR; bgcolor="white"; nodesep=0.7; ranksep=1.1;
+  node [shape=plain, fontname="Helvetica"];
+  edge [fontname="Helvetica", fontsize=11, dir=both, arrowtail=tee, arrowhead=crow, color="#444444"];
+
+  Category [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#FFFFFF">
+    <TR><TD BGCOLOR="#2F5D8A"><FONT COLOR="white"><B>Category</B></FONT></TD></TR>
+    <TR><TD ALIGN="LEFT"><B>PK</B> id : int</TD></TR>
+    <TR><TD ALIGN="LEFT">name : str (unique)</TD></TR></TABLE>>];
+
+  Supplier [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#FFFFFF">
+    <TR><TD BGCOLOR="#2F5D8A"><FONT COLOR="white"><B>Supplier</B></FONT></TD></TR>
+    <TR><TD ALIGN="LEFT"><B>PK</B> id : int</TD></TR>
+    <TR><TD ALIGN="LEFT">name : str</TD></TR>
+    <TR><TD ALIGN="LEFT">phone : str</TD></TR>
+    <TR><TD ALIGN="LEFT">email : str</TD></TR></TABLE>>];
+
+  Item [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#FFFFFF">
+    <TR><TD BGCOLOR="#2F5D8A"><FONT COLOR="white"><B>Item</B></FONT></TD></TR>
+    <TR><TD ALIGN="LEFT"><B>PK</B> id : int</TD></TR>
+    <TR><TD ALIGN="LEFT">name : str</TD></TR>
+    <TR><TD ALIGN="LEFT">price : float</TD></TR>
+    <TR><TD ALIGN="LEFT">quantity : int</TD></TR>
+    <TR><TD ALIGN="LEFT"><B>FK</B> category_id : int</TD></TR>
+    <TR><TD ALIGN="LEFT"><B>FK</B> supplier_id : int</TD></TR></TABLE>>];
+
+  StockTransaction [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" BGCOLOR="#FFFFFF">
+    <TR><TD BGCOLOR="#2F5D8A"><FONT COLOR="white"><B>StockTransaction</B></FONT></TD></TR>
+    <TR><TD ALIGN="LEFT"><B>PK</B> id : int</TD></TR>
+    <TR><TD ALIGN="LEFT"><B>FK</B> item_id : int</TD></TR>
+    <TR><TD ALIGN="LEFT">quantity_change : int</TD></TR>
+    <TR><TD ALIGN="LEFT">comment : str</TD></TR>
+    <TR><TD ALIGN="LEFT">created_at : datetime</TD></TR></TABLE>>];
+
+  Category -> Item [label="1 : N"];
+  Supplier -> Item [label="1 : N"];
+  Item -> StockTransaction [label="1 : N"];
+}

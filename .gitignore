@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Виртуальное окружение
+venv/
+.venv/
+env/
+
+# Секреты и конфигурации
+.env
+*.env
+
+# База данных (не отправляем в Git!)
+*.db
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+.cursor/
+.DS_Store
