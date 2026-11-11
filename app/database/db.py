@@ -1,7 +1,7 @@
 """Настройка подключения к БД (ЛР №2)."""
 import os
 
-from sqlmodel import SQLModel, create_engine
+from sqlmodel import Session, SQLModel, create_engine
 
 # Импорт моделей нужен, чтобы SQLModel "увидел" все таблицы перед create_all
 from app.database import models  # noqa: F401
@@ -18,3 +18,9 @@ engine = create_engine(
 
 def init_db() -> None:
     SQLModel.metadata.create_all(engine)
+
+
+def get_session():
+    """Зависимость FastAPI: открывает сессию на запрос и гарантированно закрывает её."""
+    with Session(engine) as session:
+        yield session

@@ -40,6 +40,20 @@ class Item(ItemBase, table=True):
     transactions: List["StockTransaction"] = Relationship(back_populates="item")
 
 
+class ItemCreate(ItemBase):
+    """Схема для POST: клиент не может передать id."""
+
+
+class ItemRead(ItemBase):
+    """Схема ответа API: товар вместе с id."""
+    id: int
+
+
+class CategoryRead(SQLModel):
+    id: int
+    name: str
+
+
 class StockTransaction(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     item_id: int = Field(foreign_key="item.id")
