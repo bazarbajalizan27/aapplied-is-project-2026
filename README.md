@@ -49,3 +49,13 @@ streamlit run app/frontend/ui.py        # терминал 2: интерфейс
 | PATCH | `/items/{id}` | Частично обновить товар |
 | DELETE | `/items/{id}` | Удалить товар |
 | GET | `/categories` | Список категорий |
+## 6. Запуск через Docker
+docker compose up --build
+
+- Интерфейс: http://localhost:8501
+- Swagger UI: http://localhost:8000/docs
+
+## 7. Запуск тестов
+pytest
+
+Результат: 3 passed (GET /items, POST /items, валидация цены).
